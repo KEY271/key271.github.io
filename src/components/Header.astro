@@ -1,0 +1,14 @@
+---
+import type { Locale } from "../i18n/ui";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+type Props = {
+    locale: Locale;
+};
+
+const { locale } = Astro.props;
+---
+
+<header>
+    <LanguageSwitcher locale={locale} />
+</header>
