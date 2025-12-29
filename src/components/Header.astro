@@ -16,6 +16,8 @@ const t = ui[locale];
         <a href={getRelativeLocaleUrl(locale, "")}>Keita Tsuji</a>
     </div>
     <nav>
+        <a href={getRelativeLocaleUrl(locale, "")}>{t.nav_about}</a>
+        <a href={getRelativeLocaleUrl(locale, "works")}>{t.nav_works}</a>
         <a href={getRelativeLocaleUrl(locale, "cv")}>{t.nav_cv}</a>
         <LanguageSwitcher locale={locale} />
     </nav>
