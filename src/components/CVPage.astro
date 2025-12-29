@@ -1,0 +1,70 @@
+---
+import type { Locale } from "../i18n/ui";
+
+type Props = {
+    locale: Locale;
+};
+
+const { locale } = Astro.props;
+---
+
+<h1>{locale === "ja" ? "経歴" : "CV"}</h1>
+<table>
+    <tbody>
+        <tr>
+            <td>{locale === "ja" ? "2025/4" : "Apr, 2025"}</td>
+            <td>-</td>
+            <td>{locale === "ja" ? "現在" : "Present"}</td>
+            <td>
+                {locale === "ja" ? "院生" : "Grad."}
+            </td>
+            <td>
+                <a href="https://www.ipmu.jp/" target="_blank" rel="">
+                    {
+                        locale === "ja"
+                            ? "カブリ数物連携宇宙研究機構"
+                            : "Kavli IPMU"
+                    }
+                </a>
+            </td>
+            <td>
+                {
+                    locale === "ja"
+                        ? "東京大学大学院理学系研究科物理学専攻"
+                        : "Dept. of Physics, Univ. of Tokyo"
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>{locale === "ja" ? "2021/4" : "Apr, 2021"}</td>
+            <td>-</td>
+            <td>{locale === "ja" ? "2025/3" : "Mar, 2025"}</td>
+            <td>
+                {locale === "ja" ? "学部生" : "Undergrad."}
+            </td>
+            <td></td>
+            <td>
+                {
+                    locale === "ja"
+                        ? "東京大学理学部物理学科"
+                        : "Dept. of Physics, Univ. of Tokyo"
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    table {
+        margin-top: 1em;
+        border-collapse: collapse;
+        border-top: 1px solid #ccc;
+    }
+    tr {
+        border-bottom: 1px solid #ccc;
+    }
+    td {
+        padding: 0 0.5em;
+        max-width: 480px;
+    }
+</style>

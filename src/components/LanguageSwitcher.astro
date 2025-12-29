@@ -10,7 +10,11 @@ const { locale } = Astro.props;
 const otherLocale = locale === "en" ? ("ja" as const) : ("en" as const);
 ---
 
-<a href={getRelativeLocaleUrl(otherLocale, "")}>
+<a
+    href={getRelativeLocaleUrl(otherLocale, "")}
+    target="_blank"
+    rel="noopener noreferrer"
+>
     {otherLocale === "en" ? "English" : "日本語"}
 </a>
 
