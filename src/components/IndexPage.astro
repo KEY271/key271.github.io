@@ -8,20 +8,6 @@ type Props = {
 };
 
 const { locale } = Astro.props;
-const label_affiliation = locale === "ja" ? "所属" : "Affiliation";
-const affiliation =
-    locale === "ja"
-        ? "カブリ数物連携宇宙研究機構 修士課程"
-        : "Master's course at Kavli IPMU";
-const label_supervisor = locale === "ja" ? "指導教員" : "Supervisor";
-const supervisor = locale === "ja" ? "立川 裕二" : "Yuji Tachikawa";
-const label_interest = locale === "ja" ? "興味" : "Research topic";
-const interest = locale === "ja" ? "場の量子論" : "Quantum field theory";
-const label_particular_topics = locale === "ja" ? "特に" : "In particular";
-const particular_topics =
-    locale === "ja"
-        ? "一般化対称性・CFT・TQFT"
-        : "Generalized symmetries, CFT, TQFT";
 ---
 
 <h1>
@@ -31,14 +17,34 @@ const particular_topics =
 
 <div class="about-container">
     <div class="about">
-        <p>{label_affiliation}: {affiliation}</p>
         <p>
-            {label_supervisor}: <a href="https://member.ipmu.jp/yuji.tachikawa/"
-                >{supervisor}</a
-            >
+            {locale === "ja" ? "所属" : "Affiliation"}: {
+                locale === "ja"
+                    ? "カブリ数物連携宇宙研究機構 修士課程"
+                    : "Master's course at Kavli IPMU"
+            }
         </p>
-        <p>{label_interest}: {interest}</p>
-        <p>{label_particular_topics}: {particular_topics}</p>
+        <p>
+            {locale === "ja" ? "指導教員" : "Supervisor"}: <a
+                href="https://member.ipmu.jp/yuji.tachikawa/"
+            >
+                {locale === "ja" ? "立川 裕二" : "Yuji Tachikawa"}
+            </a>
+        </p>
+        <p>
+            {
+                locale === "ja"
+                    ? "興味: 場の量子論"
+                    : "Research topic: Quantum field theory"
+            }
+        </p>
+        <p>
+            {
+                locale === "ja"
+                    ? "特に、一般化対称性・CFT・TQFT"
+                    : "In particular, Generalized symmetries, CFT, TQFT"
+            }
+        </p>
         <p>e-mail: keita.tsuji[at]ipmu.jp</p>
     </div>
     <div class="profile-image">
