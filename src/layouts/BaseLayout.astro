@@ -9,20 +9,9 @@ type Props = {
     canonicalPath?: string;
 };
 
-const {
-    title = "Keita Tsuji",
-    description = "Research website!",
-    canonicalPath,
-} = Astro.props;
+const { title = "Keita Tsuji" } = Astro.props;
 
 const locale = (Astro.currentLocale ?? "en") as Locale;
-const t = ui[locale];
-
-const site = Astro.site;
-const canonicalUrl =
-    site && canonicalPath
-        ? new URL(canonicalPath.replace(/^\//, ""), site).toString()
-        : undefined;
 
 import "../styles/global.css";
 ---
@@ -35,13 +24,9 @@ import "../styles/global.css";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
-        <meta name="description" content={description} />
-        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
 
         <style>
             main {
