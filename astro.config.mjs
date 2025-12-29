@@ -11,4 +11,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  image: {
+    responsiveStyles: true,
+  },
 });
