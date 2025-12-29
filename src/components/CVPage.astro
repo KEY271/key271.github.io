@@ -19,7 +19,11 @@ const { locale } = Astro.props;
                 {locale === "ja" ? "院生" : "Grad."}
             </td>
             <td>
-                <a href="https://www.ipmu.jp/" target="_blank" rel="">
+                <a
+                    href="https://www.ipmu.jp/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     {
                         locale === "ja"
                             ? "カブリ数物連携宇宙研究機構"
