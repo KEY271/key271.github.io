@@ -1,6 +1,7 @@
 ---
 import { ui, type Locale } from "../i18n/ui";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 type Props = {
     title?: string;
@@ -22,6 +23,8 @@ const canonicalUrl =
     site && canonicalPath
         ? new URL(canonicalPath.replace(/^\//, ""), site).toString()
         : undefined;
+
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -39,11 +42,29 @@ const canonicalUrl =
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+
+        <style>
+            main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+                flex: 1;
+            }
+            .container {
+                width: 100%;
+                max-width: 960px;
+                padding-top: 1em;
+            }
+        </style>
     </head>
     <body>
         <Header locale={locale} />
         <main>
-            <slot />
+            <div class="container">
+                <slot />
+            </div>
         </main>
+        <Footer />
     </body>
 </html>

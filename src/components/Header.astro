@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import type { Locale } from "../i18n/ui";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 
@@ -10,5 +11,29 @@ const { locale } = Astro.props;
 ---
 
 <header>
-    <LanguageSwitcher locale={locale} />
+    <div class="site-title">
+        <a href={getRelativeLocaleUrl(locale, "")}>Keita Tsuji</a>
+    </div>
+    <nav>
+        <LanguageSwitcher locale={locale} />
+    </nav>
 </header>
+
+<style>
+    header {
+        display: flex;
+        background-color: #3d5a80;
+        height: 4em;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1em;
+    }
+    .site-title {
+        font-weight: bold;
+        font-size: 20px;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>

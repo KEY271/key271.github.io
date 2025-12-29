@@ -13,3 +13,10 @@ const otherLocale = locale === "en" ? ("ja" as const) : ("en" as const);
 <a href={getRelativeLocaleUrl(otherLocale, "")}>
     {otherLocale === "en" ? "English" : "日本語"}
 </a>
+
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
