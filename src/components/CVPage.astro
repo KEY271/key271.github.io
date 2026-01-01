@@ -6,57 +6,109 @@ type Props = {
 };
 
 const { locale } = Astro.props;
+
+type CVEntry = {
+    start: string;
+    end: string;
+    position: string;
+    organization: string;
+    department: string;
+};
+const jaCV: CVEntry[] = [
+    {
+        start: "2025/4",
+        end: "現在",
+        position: "院生",
+        organization: "カブリ数物連携宇宙研究機構",
+        department: "東京大学大学院理学系研究科物理学専攻",
+    },
+    {
+        start: "2023/4",
+        end: "2025/3",
+        position: "学部生",
+        organization: "",
+        department: "東京大学理学部物理学科",
+    },
+    {
+        start: "2021/4",
+        end: "2023/3",
+        position: "学部生",
+        organization: "",
+        department: "東京大学教養学部理科一類",
+    },
+    {
+        start: "2018/4",
+        end: "2021/3",
+        position: "高校生",
+        organization: "",
+        department: "岐阜県立岐阜高等学校",
+    },
+];
+const enCV: CVEntry[] = [
+    {
+        start: "Apr, 2025",
+        end: "Present",
+        position: "Grad.",
+        organization: "Kavli IPMU",
+        department: "Dept. of Physics, UTokyo",
+    },
+    {
+        start: "Apr, 2023",
+        end: "Mar, 2025",
+        position: "Undergrad.",
+        organization: "",
+        department: "Dept. of Physics, UTokyo",
+    },
+    {
+        start: "Apr, 2021",
+        end: "Mar, 2023",
+        position: "Undergrad.",
+        organization: "",
+        department: "College of Arts and Sciences, UTokyo",
+    },
+    {
+        start: "Apr, 2018",
+        end: "Mar, 2021",
+        position: "",
+        organization: "",
+        department: "Gifu Prefectural Gifu High School",
+    },
+];
 ---
 
 <h1>{locale === "ja" ? "経歴" : "CV"}</h1>
 <table>
     <tbody>
-        <tr>
-            <td>{locale === "ja" ? "2025/4" : "Apr, 2025"}</td>
-            <td>-</td>
-            <td>{locale === "ja" ? "現在" : "Present"}</td>
-            <td>
-                {locale === "ja" ? "院生" : "Grad."}
-            </td>
-            <td>
-                <a
-                    href="https://www.ipmu.jp/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {
-                        locale === "ja"
-                            ? "カブリ数物連携宇宙研究機構"
-                            : "Kavli IPMU"
-                    }
-                </a>
-            </td>
-            <td>
-                {
-                    locale === "ja"
-                        ? "東京大学大学院理学系研究科物理学専攻"
-                        : "Dept. of Physics, Univ. of Tokyo"
-                }
-            </td>
-        </tr>
-        <tr>
-            <td>{locale === "ja" ? "2021/4" : "Apr, 2021"}</td>
-            <td>-</td>
-            <td>{locale === "ja" ? "2025/3" : "Mar, 2025"}</td>
-            <td>
-                {locale === "ja" ? "学部生" : "Undergrad."}
-            </td>
-            <td></td>
-            <td>
-                {
-                    locale === "ja"
-                        ? "東京大学理学部物理学科"
-                        : "Dept. of Physics, Univ. of Tokyo"
-                }
-            </td>
-        </tr>
+        {
+            (locale === "ja" ? jaCV : enCV).map(
+                ({ start, end, position, organization, department }) => (
+                    <tr>
+                        <td>{start}</td>
+                        <td>-</td>
+                        <td>{end}</td>
+                        <td>{position}</td>
+                        <td>{organization}</td>
+                        <td>{department}</td>
+                    </tr>
+                ),
+            )
+        }
     </tbody>
 </table>
+<ul>
+    <li>
+        <a
+            href={"https://www.s.u-tokyo.ac.jp/" + locale + "/FoPM/"}
+            target="_blank"
+            rel="noopener noreferrer"
+            >{
+                locale === "ja"
+                    ? "変革を駆動する先端物理・数学プログラム（FoPM）"
+                    : "The Forefront Physics and Mathematics Program to Drive Transformation (FoPM)"
+            }</a
+        >{locale === "ja" ? " 2025年4月採択" : " since Apr, 2025"}
+    </li>
+</ul>
 
 <style>
     table {
@@ -70,5 +122,11 @@ const { locale } = Astro.props;
     td {
         padding: 0 0.5em;
         max-width: 480px;
+    }
+    ul {
+        margin-top: 1em;
+    }
+    li {
+        list-style-position: inside;
     }
 </style>
