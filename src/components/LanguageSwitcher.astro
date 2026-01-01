@@ -8,13 +8,16 @@ type Props = {
 
 const { locale } = Astro.props;
 const otherLocale = locale === "en" ? ("ja" as const) : ("en" as const);
+
+const pathname = Astro.url.pathname;
+const parts = pathname.split("/").filter(Boolean);
+const bareParts =
+    parts[0] && ["en", "ja"].includes(parts[0]) ? parts.slice(1) : parts;
+const barePath = bareParts.join("/");
+const otherLocalePath = `${getRelativeLocaleUrl(otherLocale, barePath)}${Astro.url.search}${Astro.url.hash}`;
 ---
 
-<a
-    href={getRelativeLocaleUrl(otherLocale, "")}
-    target="_blank"
-    rel="noopener noreferrer"
->
+<a href={otherLocalePath}>
     {otherLocale === "en" ? "English" : "日本語"}
 </a>
 
