@@ -1,0 +1,39 @@
+---
+type Props = {
+    arxivId: string;
+    title: string;
+    supplement: string | null;
+};
+const { arxivId, title, supplement } = Astro.props;
+---
+
+<section>
+    <h2>
+        [<a href={"https://arxiv.org/abs/" + {arxivId}} target="_blank" rel="noopener noreferrer">{arxivId}</a>]
+        <span class="title">{title}</span>{ supplement === null ? <></> : <><br />{supplement}</>}
+    </h2>
+    <div class="content">
+        <slot />
+    </div>
+    <style>
+        a {
+            color: #ee6c4d;
+        }
+        section {
+            margin-top: 1em;
+        }
+        h2 {
+            font-weight: normal;
+            font-size: 1.2em;
+            background-color: #e0fbfc;
+        }
+        .title {
+            font-weight: bold;
+        }
+        .content {
+            margin: 1em 0;
+            border-left: 4px solid #3d5a80;
+            padding-left: 1em;
+        }
+    </style>
+</section>
