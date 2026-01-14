@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import profileImage1 from "../assets/images/me_1.jpg";
+import profileImage2 from "../assets/images/me_2.jpg";
 import type { Locale } from "../i18n/ui";
 
 type Props = {
@@ -49,7 +50,16 @@ const { locale } = Astro.props;
     </div>
     <div class="profile-image">
         <Image
+            id="profile-image-1"
             src={profileImage1}
+            alt="My photo."
+            widths={[300, 400]}
+            sizes={`(max-width: 960px) 300px, 400px`}
+            layout="constrained"
+        />
+        <Image
+            id="profile-image-2"
+            src={profileImage2}
             alt="My photo."
             widths={[300, 400]}
             sizes={`(max-width: 960px) 300px, 400px`}
@@ -57,6 +67,27 @@ const { locale } = Astro.props;
         />
     </div>
 </div>
+
+<script>
+    const img1 = document.getElementById("profile-image-1");
+    const img2 = document.getElementById("profile-image-2");
+    if (img1 && img2) {
+        if (Math.random() < 0.5) {
+            img1.style.display = "none";
+            img2.style.display = "block";
+        }
+
+        img1.onclick = () => {
+            img1.style.display = "none";
+            img2.style.display = "block";
+        };
+
+        img2.onclick = () => {
+            img2.style.display = "none";
+            img1.style.display = "block";
+        };
+    }
+</script>
 
 <style>
     h1 span {
@@ -77,6 +108,9 @@ const { locale } = Astro.props;
     }
     .profile-image {
         width: 400px;
+    }
+    #profile-image-2 {
+        display: none;
     }
     @media screen and (max-width: 960px) {
         .profile-image {
