@@ -9,8 +9,19 @@ const { arxivId, title, supplement } = Astro.props;
 
 <section>
     <h2>
-        [<a href={"https://arxiv.org/abs/" + {arxivId}} target="_blank" rel="noopener noreferrer">{arxivId}</a>]
-        <span class="title">{title}</span>{ supplement === null ? <></> : <><br />{supplement}</>}
+        [<a
+            href={"https://arxiv.org/abs/" + arxivId}
+            target="_blank"
+            rel="noopener noreferrer">{arxivId}</a
+        >]
+        <span class="title">{title}</span>{
+            supplement && (
+                <>
+                    <br />
+                    {supplement}
+                </>
+            )
+        }
     </h2>
     <div class="content">
         <slot />

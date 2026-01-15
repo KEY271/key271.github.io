@@ -1,18 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ExtLink from "../components/ExtLink.astro";
 ---
 
 <BaseLayout title="Works - Keita Tsuji">
     <h1>Works</h1>
     <h2>Papers</h2>
-    <h3>Coming soon.</h3>
+    <ul class="papers">
+        <li>
+            <span class="title"
+                >Web of dualities on non-orientable surfaces</span
+            >, <ExtLink href="https://arxiv.org/abs/2601.09067"
+                >arxiv:2601.09067</ExtLink
+            >
+        </li>
+    </ul>
     <h2>Articles</h2>
     <h3>
-        [<a
+        [<ExtLink
             href="https://event.phys.s.u-tokyo.ac.jp/physlab2023/pdf/mat-article03.pdf"
-            target="_blank"
-            class="link"
-            rel="noopener noreferrer">pdf</a
+            >pdf</ExtLink
         >] Geometric Quantization (Japanese)
     </h3>
     <style>
@@ -22,8 +29,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         h3 {
             margin-top: 0.5em;
         }
-        .link {
-            color: #ee6c4d;
+        .title {
+            font-weight: bold;
+        }
+        .papers li {
+            font-size: 20px;
         }
     </style>
 </BaseLayout>

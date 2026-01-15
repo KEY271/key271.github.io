@@ -1,11 +1,81 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Comment from "../../components/Comment.astro";
+import jiroImage from "../../assets/images/jiro.jpg";
 ---
 
 <BaseLayout title="論文のコメント - Keita Tsuji">
     <h1>論文のコメント</h1>
-    <Comment arxivId="未定" title="近日公開" supplement="with Ippo Orii">
-        近日公開です。
+    <Comment
+        arxivId="2601.09067"
+        title="Web of dualities on non-orientable surfaces"
+        supplement="with Ippo Orii"
+    >
+        <div class="with-image">
+            <div>
+                Ising CFT が Majorana CFT
+                と等価であるという話は昔から有名で、最近は non-anomalous な Z_2
+                対称性がある系なら Fermionization
+                ができるという一般化が知られている。これはスピン構造から定まる
+                quadratic refinement を使っているわけだが、2025年9月に<a
+                    href="https://sites.google.com/g.ecc.u-tokyo.ac.jp/ippoorii/about"
+                    >折井さん</a
+                >に向き付け不可能な曲面でも Pin- 構造の quadratic refinement
+                を使えば Fermionization
+                を自然に拡張できるのではないかという話を持ちかけられた。<a
+                    href="https://arxiv.org/abs/2504.20021">そういう論文</a
+                >は既にあったが、群構造や SymTFT、S^1 上の Hilbert
+                空間のセクターの議論などは調べられていなかったので調べた。TQFT
+                まわりの部分と CFT の部分でうまく分担できたと思う。arXiv
+                に投稿したあと折井さんと柏二郎に行ったが、この日はアブラが大きくておいしかった。
+            </div>
+            <div class="figure">
+                <Image
+                    id="profile-image-1"
+                    src={jiroImage}
+                    alt="My photo."
+                    widths={[160, 200]}
+                    sizes={`(max-width: 960px) 160px, 200px`}
+                    layout="constrained"
+                />
+                <span>Figure 1: 柏二郎中ラーメンヤサイアブラ。</span>
+            </div>
+        </div>
     </Comment>
+    <style>
+        .with-image {
+            display: flex;
+            margin-top: 1em;
+            justify-content: space-between;
+            gap: 1em;
+        }
+        .figure {
+            display: flex;
+            flex: none;
+            flex-direction: column;
+            width: 200px;
+        }
+        @media screen and (max-width: 960px) {
+            .figure {
+                width: 160px;
+            }
+            .figure img {
+                margin-right: 4px;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .with-image {
+                flex-direction: column;
+            }
+            .figure {
+                flex-direction: row;
+                width: auto;
+            }
+            .figure img {
+                flex: none;
+                width: 200px;
+            }
+        }
+    </style>
 </BaseLayout>
