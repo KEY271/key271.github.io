@@ -19,11 +19,14 @@ const { locale } = Astro.props;
 <div class="about-container">
     <div class="about">
         <p>
-            {locale === "ja" ? "所属" : "Affiliation"}: {
-                locale === "ja"
-                    ? "カブリ数物連携宇宙研究機構 修士課程"
-                    : "Master's course at Kavli IPMU"
-            }
+            {locale === "ja" ? "所属" : "Affiliation"}: <a
+                href="https://www.ipmu.jp/"
+                >{
+                    locale === "ja"
+                        ? "カブリ数物連携宇宙研究機構"
+                        : "Kavli IPMU"
+                }</a
+            >
         </p>
         <p>
             {locale === "ja" ? "指導教員" : "Supervisor"}: <a
