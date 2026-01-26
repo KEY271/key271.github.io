@@ -19,8 +19,9 @@ const { locale } = Astro.props;
 <div class="about-container">
     <div class="about">
         <p>
-            {locale === "ja" ? "所属" : "Affiliation"}: <a
-                href="https://www.ipmu.jp/"
+            {locale === "ja" ? "所属" : "Affiliation"}:
+            {locale === "ja" ? "" : "Master's course at"}
+            <a href="https://www.ipmu.jp/"
                 >{
                     locale === "ja"
                         ? "カブリ数物連携宇宙研究機構"
@@ -29,9 +30,8 @@ const { locale } = Astro.props;
             >
         </p>
         <p>
-            {locale === "ja" ? "指導教員" : "Supervisor"}: <a
-                href="https://member.ipmu.jp/yuji.tachikawa/"
-            >
+            {locale === "ja" ? "指導教員" : "Supervisor"}:
+            <a href="https://member.ipmu.jp/yuji.tachikawa/">
                 {locale === "ja" ? "立川 裕二" : "Yuji Tachikawa"}
             </a>
         </p>
@@ -48,6 +48,13 @@ const { locale } = Astro.props;
                     ? "特に、一般化対称性・CFT・TQFT"
                     : "In particular, Generalized symmetries, CFT, TQFT"
             }
+        </p>
+        <p>
+            {locale === "ja" ? "リンク" : "Link"}:
+            <a href="https://inspirehep.net/authors/3109726">[INSPIRE-HEP]</a>
+            <a href="https://scholar.google.com/citations?user=xnHyMFYAAAAJ"
+                >[Google Scholar]</a
+            >
         </p>
         <p>e-mail: keita.tsuji[at]ipmu.jp</p>
     </div>
